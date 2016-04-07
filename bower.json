@@ -1,0 +1,22 @@
+{
+  "name": "lazy.lo",
+  "version": "0.1",
+  "homepage": "https://github.com/Euheny/lazy.lo",
+  "authors": [
+    "Euheny Bondarovich <euheny@euheny.com>"
+  ],
+  "description": "lazy load image",
+  "main": [
+    "dist/lazy-lo.min.js",
+    "dist/lazy-lo.min.css"
+  ],
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "lazy.lo",
+  "version": "0.1",
+  "description": "lazy load image",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.4",
+    "gulp-postcss": "^6.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "postcss-svg": "^1.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Euheny/lazy.lo.git"
+  },
+  "author": "Euheny Bondarovich <euheny@euheny.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Euheny/lazy.lo/issues"
+  },
+  "homepage": "https://github.com/Euheny/lazy.lo#readme"
+}
