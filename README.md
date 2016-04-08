@@ -40,5 +40,5 @@ You can set placeholder image via `data-lazylo-placeholder`
 or via javascript var
 
 ```html
-<script> var qazy_image = "http://qnimate.com/blank.gif";  </script>
+<script> var lazylo_image = "spin.gif";  </script>
 ```
