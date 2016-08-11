@@ -27,6 +27,12 @@
 	};
 })(Window.prototype, HTMLDocument.prototype, Element.prototype, "addEventListener", "removeEventListener", "dispatchEvent", []);
 
+function is_cached(img_url){
+  var imgEle = document.createElement("img");
+  imgEle.src = img_url;
+  return imgEle.complete || (imgEle.width+imgEle.height) > 0;
+}
+
 (function() {
   var lazylo = {};
 
@@ -60,14 +66,16 @@
       var pageXOffset = window.pageXOffset;
       var viewportWidth = window.innerWidth;
 
-      if (offsetParentTop > pageYOffset && offsetParentTop < pageYOffset + viewportHeight && offsetParentLeft > pageXOffset && offsetParentLeft < pageXOffset + viewportWidth) {
-        lazylo.view_elements[count].src = lazylo.view_elements[count].getAttribute("data-lazylo-src");
-        lazylo.view_elements[count].onload = function() {
-          this.setAttribute("data-lazylo-state", "loaded");
-        };
-        lazylo.view_elements.splice(count, 1);
-        count--;
-      }
+
+        if (offsetParentTop > pageYOffset && offsetParentTop < pageYOffset + viewportHeight && offsetParentLeft > pageXOffset && offsetParentLeft < pageXOffset + viewportWidth) {
+          lazylo.view_elements[count].src = lazylo.view_elements[count].getAttribute("data-lazylo-src");
+          lazylo.view_elements[count].onload = function() {
+            this.setAttribute("data-lazylo-state", "loaded");
+          };
+          lazylo.view_elements.splice(count, 1);
+          count--;
+        }
+
     }
   };
 
@@ -78,15 +86,18 @@
     var elements = document.querySelectorAll("img[data-lazylo][data-lazylo='true']");
 
     for (var count = 0; count < elements.length; count++) {
-      lazylo.view_elements.push(elements[count]);
-      elements[count].setAttribute("data-lazylo", "false");
+      if(is_cached(elements[count].src) === false) {
+        console.log(elements[count].src);
+        lazylo.view_elements.push(elements[count]);
+        elements[count].setAttribute("data-lazylo", "false");
 
-      var source_url = elements[count].src;
+        var source_url = elements[count].src;
 
-      elements[count].setAttribute("data-lazylo-src", source_url);
-      elements[count].setAttribute("data-lazylo-state", 'waiting');
+        elements[count].setAttribute("data-lazylo-src", source_url);
+        elements[count].setAttribute("data-lazylo-state", 'waiting');
 
-      elements[count].src = elements[count].getAttribute("data-lazylo-placeholder") || lazylo.lazylo_image;
+        elements[count].src = elements[count].getAttribute("data-lazylo-placeholder") || lazylo.lazylo_image;
+      }
     }
   };
 
