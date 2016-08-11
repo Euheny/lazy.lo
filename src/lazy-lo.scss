@@ -2,6 +2,7 @@
   background-image: svg('spin');
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  pointer-events: none;
 
   animation: lazylo .5s linear infinite;
 }
